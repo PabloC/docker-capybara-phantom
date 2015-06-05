@@ -38,7 +38,7 @@ RUN \
     # Checking if phantom works
 &&  phantomjs -v
 
-COPY Gemfile /tmp/Gemfile
-ENV BUNDLE_GEMFILE /tmp/Gemfile
+COPY Gemfile /usr/src/Gemfile
+ENV BUNDLE_GEMFILE /usr/src/Gemfile
 ENV BUNDLE_PATH /vendor/bundle
 RUN bundle install

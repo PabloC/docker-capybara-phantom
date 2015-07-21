@@ -10,6 +10,10 @@ ENV buildDependencies\
 ENV phantomJSDependencies\
   libicu52 libfontconfig1 libjpeg8 libfreetype6
 
+COPY Gemfile /usr/src/Gemfile
+ENV BUNDLE_GEMFILE /usr/src/Gemfile
+ENV BUNDLE_PATH /vendor/bundle
+
 # Installing phantomjs
 RUN \
     # Installing dependencies
@@ -31,14 +35,10 @@ RUN \
 &&  ln -s /phantomjs/phantomjs-2.0.0/bin/phantomjs /usr/local/bin/phantomjs \
 &&  ln -s /phantomjs/phantomjs-2.0.0/bin/phantomjs /usr/bin/phantomjs \
     # Removing build dependencies, clean temporary files
+&&  bundle install
 &&  apt-get purge -yqq ${buildDependencies} \
 &&  apt-get autoremove -yqq \
 &&  apt-get clean \
 &&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     # Checking if phantom works
 &&  phantomjs -v
-
-COPY Gemfile /usr/src/Gemfile
-ENV BUNDLE_GEMFILE /usr/src/Gemfile
-ENV BUNDLE_PATH /vendor/bundle
-RUN bundle install

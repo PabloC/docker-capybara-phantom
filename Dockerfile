@@ -4,7 +4,7 @@ FROM freshbooks/ruby
 ENV buildDependencies\
   wget unzip python build-essential g++ flex bison gperf\
   perl libsqlite3-dev libssl-dev libpng-dev ruby-dev \
-  libicu-dev libfontconfig1-dev libjpeg-dev
+  libicu-dev libfontconfig1-dev libjpeg-dev ruby2.0-dev
 
 # Dependencies we need for running phantomjs
 ENV phantomJSDependencies\

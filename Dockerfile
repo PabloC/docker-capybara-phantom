@@ -35,7 +35,7 @@ RUN \
 &&  ln -s /phantomjs/phantomjs-2.0.0/bin/phantomjs /usr/local/bin/phantomjs \
 &&  ln -s /phantomjs/phantomjs-2.0.0/bin/phantomjs /usr/bin/phantomjs \
     # Removing build dependencies, clean temporary files
-&&  bundle install
+&&  bundle install \
 &&  apt-get purge -yqq ${buildDependencies} \
 &&  apt-get autoremove -yqq \
 &&  apt-get clean \

@@ -21,16 +21,3 @@ RUN apt-get update -yqq \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     # Checking if phantom works
     && phantomjs -v
-
-COPY Gemfile /usr/src/Gemfile
-ENV BUNDLE_GEMFILE /usr/src/Gemfile
-ENV BUNDLE_PATH /vendor/bundle
-ENV rubyDependencies\
-  ruby2.0-dev make gcc zlib1g-dev libxml2-dev patch
-RUN apt-get update -yqq \
-    && apt-get install -fyqq ${rubyDependencies} \
-    && bundle install \
-    && apt-get purge -yqq ${rubyDependencies} \
-    && apt-get autoremove -yqq \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

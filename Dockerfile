@@ -1,4 +1,4 @@
-FROM freshbooks/ruby
+FROM freshbooks/ruby23
 
 ENV DEBIAN_FRONTEND noninteractive
 
